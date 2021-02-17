@@ -1,0 +1,35 @@
+<!-基本没改动，只是为了方便改了点属性名-->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Egg.js_test</title>
+
+</head>
+<body>
+    <div class="text" style="text-align:center;">
+    <h1>Todolist</h1>
+
+    <form action="/" method="POST">
+        <br>
+        <input type="text" autocomplete="off" name="things">
+        <input type="submit" value="添加">
+    </form>
+
+    <ul>
+        <% for (var i=0; i<output.length; i++) {%>
+            <a href="/<%= output[i].id %>">    <!--a标签里操作-->
+                <%= output[i].things %> 
+            </a>
+            <br><br> 
+        <%}%>
+        </form>
+        
+    </ul>
+
+    </div>
+</body>
+</html>
