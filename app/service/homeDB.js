@@ -1,3 +1,5 @@
+// 连接数据库
+
 const mongoose = require('mongoose');
 
 mongoose.connect(
@@ -16,7 +18,7 @@ var example = new Schema({
 
 var list = mongoose.model('Thing', example);
 
-var todolist = [];
+// service
 
 'use strict';
 
@@ -25,12 +27,10 @@ const Service = require('egg').Service;
 class HomeService extends Service {
   async getHomeContent() {    
  
-    list.find(function(err, ret) {
+    const todolist = await list.find(function(err, ret) {
       if (err) console.log('find error');
-      else {
-        todolist = [].concat(ret);
-      }
     })
+    
     await this.ctx.render('homeDB.html',{output:todolist});
   }
 
@@ -47,9 +47,9 @@ class HomeService extends Service {
   }
 
   async delValue() {
-    var id = this.ctx.params.id;
+    var id = this.ctx.params;
 
-    list.deleteOne({_id: id}, function(err) {
+    list.deleteOne(id, function(err) {
       if (err) console.log('del failed');
     });
 
