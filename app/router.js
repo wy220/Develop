@@ -7,7 +7,7 @@ module.exports = app => {
 
     router.post('/', controller.home.post);
 
-    router.get('/:id', controller.home.delete);    
+    router.get('/:_id', controller.home.delete);    
 };
 
 
